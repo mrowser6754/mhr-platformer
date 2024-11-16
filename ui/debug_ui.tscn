@@ -1,0 +1,178 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkkmllk8vje7b"]
+
+[ext_resource type="Script" path="res://ui/debug_ui.gd" id="1_n264t"]
+[ext_resource type="Script" path="res://ui/states_stack_displayer.gd" id="2_mw3kb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_53fhc"]
+font_size = 25
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k5h8e"]
+font_size = 25
+font_color = Color(0.51, 0.51, 0.51, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r35xu"]
+font_size = 25
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r3wqs"]
+font_size = 25
+font_color = Color(1, 0, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0xmtm"]
+font_size = 25
+font_color = Color(0, 0.66, 0.044, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2i6b0"]
+font_size = 25
+font_color = Color(0, 0.533333, 1, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DebugUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n264t")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxSpeed" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxPlayerState" type="HBoxContainer" parent="MarginContainer/VBoxSpeed"]
+layout_mode = 2
+
+[node name="LabelPlayerState" type="Label" parent="MarginContainer/VBoxSpeed/HBoxPlayerState"]
+layout_mode = 2
+text = "Player State: "
+label_settings = SubResource("LabelSettings_53fhc")
+
+[node name="LabelPlayerStateValue" type="Label" parent="MarginContainer/VBoxSpeed/HBoxPlayerState"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "NONE"
+label_settings = SubResource("LabelSettings_53fhc")
+
+[node name="HBoxActualVelocity" type="HBoxContainer" parent="MarginContainer/VBoxSpeed"]
+layout_mode = 2
+
+[node name="LabelSpeed" type="Label" parent="MarginContainer/VBoxSpeed/HBoxActualVelocity"]
+layout_mode = 2
+text = "Actual Velocity: "
+label_settings = SubResource("LabelSettings_k5h8e")
+
+[node name="LabelActualVelocityValue" type="Label" parent="MarginContainer/VBoxSpeed/HBoxActualVelocity"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.0"
+label_settings = SubResource("LabelSettings_r35xu")
+
+[node name="HBoxProjVelocity" type="HBoxContainer" parent="MarginContainer/VBoxSpeed"]
+layout_mode = 2
+
+[node name="LabelSpeed" type="Label" parent="MarginContainer/VBoxSpeed/HBoxProjVelocity"]
+layout_mode = 2
+text = "Projected Velocity: "
+label_settings = SubResource("LabelSettings_k5h8e")
+
+[node name="LabelProjVelocityValue" type="Label" parent="MarginContainer/VBoxSpeed/HBoxProjVelocity"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.0"
+label_settings = SubResource("LabelSettings_r35xu")
+
+[node name="HBoxXSpeed" type="HBoxContainer" parent="MarginContainer/VBoxSpeed"]
+layout_mode = 2
+
+[node name="LabelX" type="Label" parent="MarginContainer/VBoxSpeed/HBoxXSpeed"]
+layout_mode = 2
+text = "X: "
+label_settings = SubResource("LabelSettings_r3wqs")
+
+[node name="LabelXValue" type="Label" parent="MarginContainer/VBoxSpeed/HBoxXSpeed"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.0"
+label_settings = SubResource("LabelSettings_r35xu")
+
+[node name="HBoxYSpeed" type="HBoxContainer" parent="MarginContainer/VBoxSpeed"]
+layout_mode = 2
+
+[node name="LabelY" type="Label" parent="MarginContainer/VBoxSpeed/HBoxYSpeed"]
+layout_mode = 2
+text = "Y: "
+label_settings = SubResource("LabelSettings_0xmtm")
+
+[node name="LabelYValue" type="Label" parent="MarginContainer/VBoxSpeed/HBoxYSpeed"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.0"
+label_settings = SubResource("LabelSettings_r35xu")
+
+[node name="HBoxZSpeed" type="HBoxContainer" parent="MarginContainer/VBoxSpeed"]
+layout_mode = 2
+
+[node name="LabelZ" type="Label" parent="MarginContainer/VBoxSpeed/HBoxZSpeed"]
+layout_mode = 2
+text = "Z: "
+label_settings = SubResource("LabelSettings_2i6b0")
+
+[node name="LabelZValue" type="Label" parent="MarginContainer/VBoxSpeed/HBoxZSpeed"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.0"
+label_settings = SubResource("LabelSettings_r35xu")
+
+[node name="StatesStackDisplayer" type="Panel" parent="MarginContainer/VBoxSpeed" node_paths=PackedStringArray("debug_ui")]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+script = ExtResource("2_mw3kb")
+debug_ui = NodePath("../../..")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxSpeed/StatesStackDisplayer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxSpeed/StatesStackDisplayer/VBoxContainer"]
+layout_mode = 2
+text = "STATESTACK
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxSpeed/StatesStackDisplayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Numbers" type="Label" parent="MarginContainer/VBoxSpeed/StatesStackDisplayer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1.
+2."
+
+[node name="States" type="Label" parent="MarginContainer/VBoxSpeed/StatesStackDisplayer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Jump
+Test"

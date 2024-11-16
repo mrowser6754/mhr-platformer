@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvo5s1rc2esmv"]
+
+[ext_resource type="PackedScene" uid="uid://dsui00p7v5657" path="res://Platforms/debug_platform.tscn" id="1_0kgqq"]
+[ext_resource type="PackedScene" uid="uid://v7uwk6hlpg4m" path="res://Player/player.tscn" id="1_q5d8c"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iu7jo"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_a7r4d"]
+sky_material = SubResource("ProceduralSkyMaterial_iu7jo")
+
+[sub_resource type="Environment" id="Environment_jm7i5"]
+background_mode = 2
+sky = SubResource("Sky_a7r4d")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="DebugLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jm7i5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="DebugPlatform" parent="." instance=ExtResource("1_0kgqq")]
+size = Vector3(100, 1, 100)
+
+[node name="Player" parent="." instance=ExtResource("1_q5d8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -2)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2.39455, 4)
