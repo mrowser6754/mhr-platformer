@@ -55,10 +55,12 @@ debug_restart={
 
 [xogot]
 
-project/breakpoints={}
+project/breakpoints={
+"res://player/states/motion/wall_slide.gd": PackedInt32Array()
+}
 project/editorState=[{
-"column": 0,
-"line": 23,
+"column": 67,
+"line": 27,
 "path": "res://player/player.gd",
 "type": "file"
 }, {
@@ -67,9 +69,34 @@ project/editorState=[{
 "path": "res://player/states/motion/fall.gd",
 "type": "file"
 }, {
-"column": 125,
-"current": true,
-"line": 19,
+"column": 0,
+"line": 0,
 "path": "res://player/states/motion/dash.gd",
+"type": "file"
+}, {
+"column": 0,
+"line": 0,
+"path": "res://player/states/motion/motion.gd",
+"type": "file"
+}, {
+"column": 0,
+"current": true,
+"line": 0,
+"path": "res://player/states/motion/state.gd",
+"type": "file"
+}, {
+"column": 2,
+"line": 23,
+"path": "res://player/states/motion/wall_slide.gd",
+"type": "file"
+}, {
+"column": 0,
+"line": 38,
+"path": "res://state_machine/state_machine.gd",
+"type": "file"
+}, {
+"column": 0,
+"line": 0,
+"path": "res://player/player_state_machine.gd",
 "type": "file"
 }]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvo5s1rc2esmv"]
+[gd_scene load_steps=10 format=3 uid="uid://bvo5s1rc2esmv"]
 
 [ext_resource type="PackedScene" uid="uid://dsui00p7v5657" path="res://platforms/debug_platform.tscn" id="1_0kgqq"]
 [ext_resource type="PackedScene" uid="uid://v7uwk6hlpg4m" path="res://player/player.tscn" id="1_q5d8c"]
@@ -42,6 +42,30 @@ shader_parameter/in_dashed_scale_y = 0.3
 shader_parameter/in_dashed_count_x = 6.0
 shader_parameter/in_dashed_count_y = 6.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hao1"]
+render_priority = 0
+shader = ExtResource("2_4ix0a")
+shader_parameter/subdivisions = 32.0
+shader_parameter/grid_width = 0.02
+shader_parameter/background_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/background_color_two = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/grid_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/dashed_scale_x = 0.02
+shader_parameter/dashed_scale_y = 0.02
+shader_parameter/dashed_count_x = 1.0
+shader_parameter/dashed_count_y = 1.0
+shader_parameter/point_width = 0.021
+shader_parameter/point_color = Color(0, 0, 0, 1)
+shader_parameter/point_scale_x = 0.05
+shader_parameter/point_scale_y = 0.05
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_subdivisions = 6.0
+shader_parameter/inside_color = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/in_dashed_scale_x = 0.3
+shader_parameter/in_dashed_scale_y = 0.3
+shader_parameter/in_dashed_count_x = 6.0
+shader_parameter/in_dashed_count_y = 6.0
+
 [node name="DebugLevel" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -54,6 +78,12 @@ shadow_enabled = true
 [node name="DebugPlatform" parent="." instance=ExtResource("1_0kgqq")]
 size = Vector3(1000, 1, 1000)
 material = SubResource("ShaderMaterial_kwnq2")
+
+[node name="DebugWall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88871, 4.64559, 0.434745)
+material_override = SubResource("ShaderMaterial_5hao1")
+use_collision = true
+size = Vector3(1, 10, 10)
 
 [node name="Player" parent="." instance=ExtResource("1_q5d8c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20514, -2)

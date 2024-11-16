@@ -7,6 +7,7 @@ extends StateMachine
 @onready var move: State = $Move
 @onready var dash: State = $Dash
 @onready var fall: State = $Fall
+@onready var wall_slide: State = $WallSlide
 
 func _enter_tree() -> void:
 	super._enter_tree()
@@ -17,7 +18,8 @@ func _ready() -> void:
 		Player_StateJump._get_state_name() : self.jump,
 		Player_StateFall._get_state_name() : self.fall,
 		Player_StateMove._get_state_name() : self.move,
-		Player_StateDash._get_state_name() : self.dash
+		Player_StateDash._get_state_name() : self.dash,
+		Player_StateWallSlide._get_state_name() : self.wall_slide
 	}
 	print(self.states_map)
 

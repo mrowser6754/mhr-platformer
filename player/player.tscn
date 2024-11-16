@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://v7uwk6hlpg4m"]
+[gd_scene load_steps=12 format=3 uid="uid://v7uwk6hlpg4m"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_rlis3"]
 [ext_resource type="Script" path="res://player/player_state_machine.gd" id="2_hyt60"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://player/states/motion/on_ground/move.gd" id="5_fdgac"]
 [ext_resource type="Script" path="res://player/states/motion/fall.gd" id="5_mbm1r"]
 [ext_resource type="Script" path="res://player/states/motion/dash.gd" id="6_1cxpp"]
+[ext_resource type="Script" path="res://player/states/motion/wall_slide.gd" id="7_oy1rg"]
 [ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://models/sophia/sophia_skin.tscn" id="7_sjoh1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_icno7"]
@@ -49,6 +50,9 @@ script = ExtResource("5_mbm1r")
 
 [node name="Move" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_fdgac")
+
+[node name="WallSlide" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_oy1rg")
 
 [node name="Dash" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("6_1cxpp")

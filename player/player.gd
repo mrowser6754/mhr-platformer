@@ -25,7 +25,8 @@ var _gravity_velocity: Vector3 = Vector3.ZERO
 @onready var sophia_skin: SophiaAnimationHandler = $SophiaSkin
 
 func _physics_process(delta: float) -> void:
-	if self.player_state_machine.current_state is not Player_StateDash : self._handle_applied_gravity(delta)
+	if self.player_state_machine.current_state is not Player_StateDash: 
+		self._handle_applied_gravity(delta)
 
 	# State normally handles deceleration, this is for states that may restrict movement
 	self.movement_velocity = Player._handle_velocity_deceleration(self.movement_velocity, self.state_move._friction, delta)
