@@ -18,10 +18,16 @@ func _exit() -> void:
 
 func _handle_input(_event: InputEvent) -> void:
 	if _event.is_action_pressed("jump"):
+		print(self.player.get_wall_normal())
+		
+		self.player.movement_velocity = Player_StateMotion.apply_force(self.player.movement_velocity, self.player.get_wall_normal(), 1.0, self.player.jump_force * 3)
 		self.finished.emit(Player_StateJump._get_state_name())
 
 func _update(_delta: float) -> void:
 	#self.player._gravity_velocity.y = -15.0
-	if self.player.is_on_floor():
+	var direction: Vector2 = Vector2(self.player.rotation.x, self.player.rotation.z)
+	print(direction)
+	
+	if self.player.is_on_floor() or not self.player.debug_ray_cast.is_colliding():
 		self.finished.emit(PlayerStateMachine.STATE_NAME_PREVIOUS)
 #endregion

@@ -20,7 +20,7 @@ func _handle_input(_event: InputEvent) -> void:
 	super._handle_input(_event)
 
 func _update(_delta: float):
-	var input_direction: Vector2 = self.get_input_direction()
+	var input_direction: Vector2 = Player.get_input_direction()
 	if input_direction: 
 		self.finished.emit(Player_StateMove._get_state_name())
 	super._update(_delta)

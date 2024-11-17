@@ -22,7 +22,7 @@ func _handle_input(_event: InputEvent) -> void:
 func _update(_delta: float) -> void:
 	if self.player.is_on_floor():
 		self.finished.emit(StateMachine.STATE_NAME_PREVIOUS)
-	elif self.player.is_on_wall():
+	elif self.player.is_on_wall() and self.player.debug_ray_cast.is_colliding():
 		self.finished.emit(Player_StateWallSlide._get_state_name())
 	super._update(_delta)
 

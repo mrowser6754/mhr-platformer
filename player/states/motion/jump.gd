@@ -9,7 +9,8 @@ static func _get_state_name() -> String:
 func _enter() -> void:
 	self.state_name = Player_StateJump._get_state_name()
 	self.player.sophia_skin.jump()
-
+	
+	self.player._applied_gravity = 0.0
 	self._movement_velocity = self.player.movement_velocity
 	self.player.jump_velocity = Player_StateMotion.apply_force(self.player.jump_velocity, player.up_direction, 1.0, self.player.jump_force)
 

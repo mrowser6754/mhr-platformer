@@ -25,10 +25,16 @@ var _gravity_velocity: Vector3 = Vector3.ZERO
 @onready var sophia_skin: SophiaAnimationHandler = $SophiaSkin
 
 func _physics_process(delta: float) -> void:
-	if self.player_state_machine.current_state is not Player_StateDash: 
+	var input_direction: Vector2 = Player.get_input_direction()
+	var rotation_angle: float = Vector2(-input_direction.y, -input_direction.x).angle()
+	
+	if self.player_state_machine.current_state is not Player_StateDash:
 		self._handle_applied_gravity(delta)
 
-	# State normally handles deceleration, this is for states that may restrict movement
+	self.debug_ray_cast.rotation.y = rotation_angle
+
+
+# State normally handles deceleration, this is for states that may restrict movement
 	self.movement_velocity = Player._handle_velocity_deceleration(self.movement_velocity, self.state_move._friction, delta)
 	self.dash_velocity = Player._handle_velocity_deceleration(self.dash_velocity, self.state_dash._friction, delta)
 
@@ -43,7 +49,7 @@ func _handle_applied_gravity(delta: float) -> void:
 	else: self._applied_gravity += (self.gravity * delta)
 
 	self._gravity_velocity.y = -self._applied_gravity
-	print(self._gravity_velocity.y)
+	#print(self._gravity_velocity.y)
 
 static func _handle_velocity_deceleration(vel: Vector3, frict: float, delta: float) -> Vector3:
 	var speed: float = vel.length()
@@ -51,3 +57,6 @@ static func _handle_velocity_deceleration(vel: Vector3, frict: float, delta: flo
 		var drop: float = speed * frict * delta
 		vel *= max(speed - drop, 0) / speed
 	return vel
+
+static func get_input_direction() -> Vector2:
+	return Input.get_vector("move_left", "move_right", "move_up", "move_down")
